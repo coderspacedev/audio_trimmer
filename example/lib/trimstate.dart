@@ -1,0 +1,4 @@
+enum TrimState {
+  start,
+  complete,
+}
