@@ -4,33 +4,33 @@ A plugin to cut audio files. You pass in a path to a file, start_time and end_ti
 
 # Getting Started
 
-Import and cut!
+Import and cut using [audio_trim](https://pub.dev/packages/audio_trim) to cut audio without using [ffmpeg](https://pub.dev/packages/ffmpeg) library!
 
-```sh
-  AudioTrimmer audioTrimmer;
+```dart
+AudioTrimmer audioTrimmer;
 
-  TrimState trimState;
+TrimState trimState;
 
-  double start_timer_in_double = 0.0;
+double start_timer_in_double = 0.0;
 
-  double end_timer_in_double = 10.0;
+double end_timer_in_double = 10.0;
 
 @override
-  void initState() {
-    super.initState();
+void initState() {
+  super.initState();
     initCutter();
-  }
+}
 
-  void initCutter() {
-    audioTrimmer = AudioTrimmer();
+void initCutter() {
+  audioTrimmer = AudioTrimmer();
 
-    audioTrimmer.setCompletionHandler(() {
-      setState(() {
-        trimState = TrimState.complete;
-      });
+  audioTrimmer.setCompletionHandler(() {
+    setState(() {
+      trimState = TrimState.complete;
     });
-  }
+  });
+}
   
-  //Cut audio using 
-  audioTrimmer.cut('path', start_timer_in_double, end_timer_in_double);
+//Cut audio using 
+audioTrimmer.cut('path', start_timer_in_double, end_timer_in_double);
 ```

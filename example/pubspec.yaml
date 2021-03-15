@@ -1,5 +1,5 @@
-name: audio_trimmer_example
-description: Demonstrates how to use the audio_trimmer plugin.
+name: audio_trim
+description: An audio_trim plugin.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
