@@ -12,7 +12,7 @@ class AudioTrimmer {
 
   VoidCallback _callback;
 
-  AudioCutter() {
+  AudioTrimmer() {
     _channel.setMethodCallHandler(platformCallHandler);
   }
 

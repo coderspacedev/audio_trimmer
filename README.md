@@ -1,15 +1,36 @@
-# audio_trimmer
+# audio_trimmer_example
 
-A new Flutter plugin.
+A plugin to cut audio files. You pass in a path to a file, start_time and end_time times and the plugin will do the rest. For now, it automatically will reduce the quality quite a bit to ensure optimal file size for storage/streaming.
 
-## Getting Started
+# Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+Import and cut!
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```sh
+  AudioTrimmer audioTrimmer;
 
+  TrimState trimState;
+
+  double start_timer_in_double = 0.0;
+
+  double end_timer_in_double = 10.0;
+
+@override
+  void initState() {
+    super.initState();
+    initCutter();
+  }
+
+  void initCutter() {
+    audioTrimmer = AudioTrimmer();
+
+    audioTrimmer.setCompletionHandler(() {
+      setState(() {
+        trimState = TrimState.complete;
+      });
+    });
+  }
+  
+  //Cut audio using 
+  audioTrimmer.cut('path', start_timer_in_double, end_timer_in_double);
+```

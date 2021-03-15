@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:audio_trimmer/audio_trimmer.dart';
+import 'package:audio_trim/audio_trim.dart';
 import 'package:audio_trimmer_example/trimstate.dart';
 import 'package:flutter/material.dart';
 
