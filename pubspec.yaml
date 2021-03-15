@@ -1,6 +1,6 @@
 name: audio_trim
 description: An audio_trim plugin.
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/techhuntdevelopers/audio_trimmer
 
 environment:

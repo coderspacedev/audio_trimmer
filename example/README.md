@@ -1,4 +1,4 @@
-# audio_trimmer_example
+# audio_trim
 
 A plugin to cut audio files. You pass in a path to a file, start_time and end_time times and the plugin will do the rest. For now, it automatically will reduce the quality quite a bit to ensure optimal file size for storage/streaming.
 
