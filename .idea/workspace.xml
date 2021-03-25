@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="67849cb5-7819-4b2c-99a7-5a231212dd83" name="Default Changelist" comment="v1.0 - new">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator-enh.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/example_lib_main_dart.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/caches/build_file_checksums.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/techhuntdevelopers/audio_trimmer/AudioTrimmerPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/techhuntdevelopers/audio_trimmer/AudioTrimmerPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/techhuntdevelopers/audio_trimmer/CheapAAC.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/techhuntdevelopers/audio_trimmer/CheapAAC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/techhuntdevelopers/audio_trimmer/CheapAMR.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/techhuntdevelopers/audio_trimmer/CheapAMR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/techhuntdevelopers/audio_trimmer/CheapMP3.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/techhuntdevelopers/audio_trimmer/CheapMP3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/techhuntdevelopers/audio_trimmer/CheapSoundFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/techhuntdevelopers/audio_trimmer/CheapSoundFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/techhuntdevelopers/audio_trimmer/CheapWAV.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/techhuntdevelopers/audio_trimmer/CheapWAV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/techhuntdevelopers/audio_trimmer/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/techhuntdevelopers/audio_trimmer/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/audio_trim.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/audio_trim.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1pbH4tcifG6uszTTSygaOrmSIr5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.force.activate" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Workstation\Flutter\audio_trimmer\example\lib" />
+      <recent name="F:\Workstation\Flutter\audio_trimmer\lib" />
+      <recent name="F:\Workstation\Flutter\audio_trimmer\android\src\main\java\com\techhuntdevelopers\audio_trimmer" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="67849cb5-7819-4b2c-99a7-5a231212dd83" name="Default Changelist" comment="" />
+      <created>1615444681856</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615444681856</updated>
+    </task>
+    <task id="LOCAL-00001" summary="v1.0 - new">
+      <created>1615453103372</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1615453103372</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="v1.0 - new" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.0 - new" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="410" y="165" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1615810281042">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="410" y="165" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615810281042" />
+    <state width="1863" height="265" key="GridCell.Tab.0.bottom" timestamp="1615454917339">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1615454917339" />
+    <state width="1863" height="265" key="GridCell.Tab.0.center" timestamp="1615454917339">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="265" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1615454917339" />
+    <state width="1863" height="265" key="GridCell.Tab.0.left" timestamp="1615454917339">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="265" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1615454917339" />
+    <state width="1863" height="265" key="GridCell.Tab.0.right" timestamp="1615454917339">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1863" height="265" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1615454917339" />
+    <state x="336" y="77" key="SettingsEditor" timestamp="1615452599966">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="336" y="77" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1615452599966" />
+    <state x="452" y="187" key="Vcs.Push.Dialog.v2" timestamp="1615453114079">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="452" y="187" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1615453114079" />
+    <state x="604" y="186" width="712" height="668" key="find.popup" timestamp="1616561718386">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="604" y="186" width="712" height="668" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1616561718386" />
+  </component>
+</project>

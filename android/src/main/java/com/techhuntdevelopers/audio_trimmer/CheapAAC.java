@@ -18,8 +18,9 @@ public class CheapAAC extends CheapSoundFile {
             public CheapSoundFile create() {
                 return new CheapAAC();
             }
+
             public String[] getSupportedExtensions() {
-                return new String[] { "aac", "m4a" };
+                return new String[]{"aac", "m4a"};
             }
         };
     }
@@ -28,7 +29,9 @@ public class CheapAAC extends CheapSoundFile {
         public int start;
         public int len;  // including header
         public byte[] data;
-    };
+    }
+
+    ;
 
     public static final int kDINF = 0x64696e66;
     public static final int kFTYP = 0x66747970;
@@ -51,30 +54,30 @@ public class CheapAAC extends CheapSoundFile {
     public static final int kTRAK = 0x7472616b;
 
     public static final int[] kRequiredAtoms = {
-        kDINF,
-        kHDLR,
-        kMDHD,
-        kMDIA,
-        kMINF,
-        kMOOV,
-        kMVHD,
-        kSMHD,
-        kSTBL,
-        kSTSD,
-        kSTSZ,
-        kSTTS,
-        kTKHD,
-        kTRAK,
+            kDINF,
+            kHDLR,
+            kMDHD,
+            kMDIA,
+            kMINF,
+            kMOOV,
+            kMVHD,
+            kSMHD,
+            kSTBL,
+            kSTSD,
+            kSTSZ,
+            kSTTS,
+            kTKHD,
+            kTRAK,
     };
 
     public static final int[] kSaveDataAtoms = {
-        kDINF,
-        kHDLR,
-        kMDHD,
-        kMVHD,
-        kSMHD,
-        kTKHD,
-        kSTSD,
+            kDINF,
+            kHDLR,
+            kMDHD,
+            kMVHD,
+            kSMHD,
+            kTKHD,
+            kSTSD,
     };
 
     // Member variables containing frame info
@@ -122,7 +125,7 @@ public class CheapAAC extends CheapSoundFile {
     }
 
     public int getFileSizeBytes() {
-        return mFileSize;        
+        return mFileSize;
     }
 
     public int getAvgBitrateKbps() {
@@ -143,16 +146,16 @@ public class CheapAAC extends CheapSoundFile {
 
     public String atomToString(int atomType) {
         String str = "";
-        str += (char)((atomType >> 24) & 0xff);
-        str += (char)((atomType >> 16) & 0xff);
-        str += (char)((atomType >> 8) & 0xff);
-        str += (char)(atomType & 0xff);
+        str += (char) ((atomType >> 24) & 0xff);
+        str += (char) ((atomType >> 16) & 0xff);
+        str += (char) ((atomType >> 8) & 0xff);
+        str += (char) (atomType & 0xff);
         return str;
     }
 
     public void ReadFile(File inputFile)
-        throws java.io.FileNotFoundException,
-               java.io.IOException {
+            throws java.io.FileNotFoundException,
+            java.io.IOException {
         super.ReadFile(inputFile);
         mChannels = 0;
         mSampleRate = 0;
@@ -168,7 +171,7 @@ public class CheapAAC extends CheapSoundFile {
         mAtomMap = new HashMap<Integer, Atom>();
 
         // No need to handle filesizes larger than can fit in a 32-bit int
-        mFileSize = (int)mInputFile.length();
+        mFileSize = (int) mInputFile.length();
 
         /*System.out.println("File size = " + mFileSize);*/
 
@@ -182,10 +185,10 @@ public class CheapAAC extends CheapSoundFile {
         stream.read(header, 0, 8);
 
         if (header[0] == 0 &&
-            header[4] == 'f' &&
-            header[5] == 't' &&
-            header[6] == 'y' &&
-            header[7] == 'p') {
+                header[4] == 'f' &&
+                header[5] == 't' &&
+                header[6] == 'y' &&
+                header[7] == 'p') {
             // Create a new stream, reset to the beginning of the file
             stream = new FileInputStream(mInputFile);
             parseMp4(stream, mFileSize);
@@ -217,7 +220,7 @@ public class CheapAAC extends CheapSoundFile {
         for (int requiredAtomType : kRequiredAtoms) {
             if (!mAtomMap.containsKey(requiredAtomType)) {
                 System.out.println("Missing atom: " +
-                                   atomToString(requiredAtomType));
+                        atomToString(requiredAtomType));
                 bad = true;
             }
         }
@@ -237,10 +240,10 @@ public class CheapAAC extends CheapSoundFile {
             byte[] atomHeader = new byte[8];
             stream.read(atomHeader, 0, 8);
             int atomLen =
-                ((0xff & atomHeader[0]) << 24) |
-                ((0xff & atomHeader[1]) << 16) |
-                ((0xff & atomHeader[2]) << 8) |
-                ((0xff & atomHeader[3]));
+                    ((0xff & atomHeader[0]) << 24) |
+                            ((0xff & atomHeader[1]) << 16) |
+                            ((0xff & atomHeader[2]) << 8) |
+                            ((0xff & atomHeader[3]));
             /*System.out.println("atomType = " +
                                (char)atomHeader[4] +
                                (char)atomHeader[5] +
@@ -252,11 +255,11 @@ public class CheapAAC extends CheapSoundFile {
                                "atomLen = " + atomLen);*/
             if (atomLen > maxLen)
                 atomLen = maxLen;
-            int atomType = 
-                ((0xff & atomHeader[4]) << 24) |
-                ((0xff & atomHeader[5]) << 16) |
-                ((0xff & atomHeader[6]) << 8) |
-                ((0xff & atomHeader[7]));
+            int atomType =
+                    ((0xff & atomHeader[4]) << 24) |
+                            ((0xff & atomHeader[5]) << 16) |
+                            ((0xff & atomHeader[6]) << 8) |
+                            ((0xff & atomHeader[7]));
 
             Atom atom = new Atom();
             atom.start = mOffset;
@@ -266,10 +269,10 @@ public class CheapAAC extends CheapSoundFile {
             mOffset += 8;
 
             if (atomType == kMOOV ||
-                atomType == kTRAK ||
-                atomType == kMDIA ||
-                atomType == kMINF ||
-                atomType == kSTBL) {
+                    atomType == kTRAK ||
+                    atomType == kMDIA ||
+                    atomType == kMINF ||
+                    atomType == kSTBL) {
                 parseMp4(stream, atomLen);
             } else if (atomType == kSTSZ) {
                 parseStsz(stream, atomLen - 8);
@@ -303,38 +306,38 @@ public class CheapAAC extends CheapSoundFile {
 
             if (skipLen < 0) {
                 throw new java.io.IOException(
-                    "Went over by " + (-skipLen) + " bytes");
+                        "Went over by " + (-skipLen) + " bytes");
             }
-                               
+
             stream.skip(skipLen);
             mOffset += skipLen;
         }
     }
 
     void parseStts(InputStream stream, int maxLen)
-        throws java.io.IOException {
+            throws java.io.IOException {
         byte[] sttsData = new byte[16];
         stream.read(sttsData, 0, 16);
         mOffset += 16;
         mSamplesPerFrame =
-            ((0xff & sttsData[12]) << 24) |
-            ((0xff & sttsData[13]) << 16) |
-            ((0xff & sttsData[14]) << 8) |
-            ((0xff & sttsData[15]));
+                ((0xff & sttsData[12]) << 24) |
+                        ((0xff & sttsData[13]) << 16) |
+                        ((0xff & sttsData[14]) << 8) |
+                        ((0xff & sttsData[15]));
 
         /*System.out.println("STTS samples per frame: " + mSamplesPerFrame);*/
     }
 
     void parseStsz(InputStream stream, int maxLen)
-        throws java.io.IOException {
+            throws java.io.IOException {
         byte[] stszHeader = new byte[12];
         stream.read(stszHeader, 0, 12);
         mOffset += 12;
         mNumFrames =
-            ((0xff & stszHeader[8]) << 24) |
-            ((0xff & stszHeader[9]) << 16) |
-            ((0xff & stszHeader[10]) << 8) |
-            ((0xff & stszHeader[11]));
+                ((0xff & stszHeader[8]) << 24) |
+                        ((0xff & stszHeader[9]) << 16) |
+                        ((0xff & stszHeader[10]) << 8) |
+                        ((0xff & stszHeader[11]));
         /*System.out.println("mNumFrames = " + mNumFrames);*/
 
         mFrameOffsets = new int[mNumFrames];
@@ -345,10 +348,10 @@ public class CheapAAC extends CheapSoundFile {
         mOffset += 4 * mNumFrames;
         for (int i = 0; i < mNumFrames; i++) {
             mFrameLens[i] =
-                ((0xff & frameLenBytes[4 * i + 0]) << 24) |
-                ((0xff & frameLenBytes[4 * i + 1]) << 16) |
-                ((0xff & frameLenBytes[4 * i + 2]) << 8) |
-                ((0xff & frameLenBytes[4 * i + 3]));
+                    ((0xff & frameLenBytes[4 * i + 0]) << 24) |
+                            ((0xff & frameLenBytes[4 * i + 1]) << 16) |
+                            ((0xff & frameLenBytes[4 * i + 2]) << 8) |
+                            ((0xff & frameLenBytes[4 * i + 3]));
             /*System.out.println("FrameLen[" + i + "] = " + mFrameLens[i]);*/
         }
     }
@@ -356,18 +359,18 @@ public class CheapAAC extends CheapSoundFile {
     void parseMp4aFromStsd() {
         byte[] stsdData = mAtomMap.get(kSTSD).data;
         mChannels =
-            ((0xff & stsdData[32]) << 8) |
-            ((0xff & stsdData[33]));
+                ((0xff & stsdData[32]) << 8) |
+                        ((0xff & stsdData[33]));
         mSampleRate =
-            ((0xff & stsdData[40]) << 8) |
-            ((0xff & stsdData[41]));
+                ((0xff & stsdData[40]) << 8) |
+                        ((0xff & stsdData[41]));
 
         /*System.out.println("%% channels = " + mChannels + ", " +
           "sampleRate = " + mSampleRate);*/
     }
 
     void parseMdat(InputStream stream, int maxLen)
-        throws java.io.IOException {
+            throws java.io.IOException {
         /*System.out.println("***MDAT***");*/
         int initialOffset = mOffset;
         for (int i = 0; i < mNumFrames; i++) {
@@ -389,7 +392,7 @@ public class CheapAAC extends CheapSoundFile {
 
             if (mProgressListener != null) {
                 boolean keepGoing = mProgressListener.reportProgress(
-                    mOffset * 1.0 / mFileSize);
+                        mOffset * 1.0 / mFileSize);
                 if (!keepGoing) {
                     break;
                 }
@@ -398,7 +401,7 @@ public class CheapAAC extends CheapSoundFile {
     }
 
     void readFrameAndComputeGain(InputStream stream, int frameIndex)
-        throws java.io.IOException {
+            throws java.io.IOException {
 
         if (mFrameLens[frameIndex] < 4) {
             mFrameGains[frameIndex] = 0;
@@ -422,110 +425,110 @@ public class CheapAAC extends CheapSoundFile {
         int idSynEle = (0xe0 & data[0]) >> 5;
         /*System.out.println("idSynEle = " + idSynEle);*/
 
-        switch(idSynEle) {
-        case 0:  // ID_SCE: mono
-            int monoGain = ((0x01 & data[0]) << 7) | ((0xfe & data[1]) >> 1);
-            /*System.out.println("monoGain = " + monoGain);*/
-            mFrameGains[frameIndex] = monoGain;
-            break;
-        case 1:  // ID_CPE: stereo
-            int windowSequence = (0x60 & data[1]) >> 5;
-            /*System.out.println("windowSequence = " + windowSequence);*/
-            int windowShape = (0x10 & data[1]) >> 4;
-            /*System.out.println("windowShape = " + windowShape);*/
+        switch (idSynEle) {
+            case 0:  // ID_SCE: mono
+                int monoGain = ((0x01 & data[0]) << 7) | ((0xfe & data[1]) >> 1);
+                /*System.out.println("monoGain = " + monoGain);*/
+                mFrameGains[frameIndex] = monoGain;
+                break;
+            case 1:  // ID_CPE: stereo
+                int windowSequence = (0x60 & data[1]) >> 5;
+                /*System.out.println("windowSequence = " + windowSequence);*/
+                int windowShape = (0x10 & data[1]) >> 4;
+                /*System.out.println("windowShape = " + windowShape);*/
 
-            int maxSfb;
-            int scaleFactorGrouping;
-            int maskPresent;
-            int startBit;
+                int maxSfb;
+                int scaleFactorGrouping;
+                int maskPresent;
+                int startBit;
 
-            if (windowSequence == 2) {
-                maxSfb = 0x0f & data[1];
+                if (windowSequence == 2) {
+                    maxSfb = 0x0f & data[1];
 
-                scaleFactorGrouping = (0xfe & data[2]) >> 1;
+                    scaleFactorGrouping = (0xfe & data[2]) >> 1;
 
-                maskPresent =
-                    ((0x01 & data[2]) << 1) |
-                    ((0x80 & data[3]) >> 7);
+                    maskPresent =
+                            ((0x01 & data[2]) << 1) |
+                                    ((0x80 & data[3]) >> 7);
 
-                startBit = 25;
-            } else {
-                maxSfb =
-                    ((0x0f & data[1]) << 2) |
-                    ((0xc0 & data[2]) >> 6);
+                    startBit = 25;
+                } else {
+                    maxSfb =
+                            ((0x0f & data[1]) << 2) |
+                                    ((0xc0 & data[2]) >> 6);
 
-                scaleFactorGrouping = -1;
+                    scaleFactorGrouping = -1;
 
-                maskPresent = (0x18 & data[2]) >> 3;
+                    maskPresent = (0x18 & data[2]) >> 3;
 
-                startBit = 21;
-            }
+                    startBit = 21;
+                }
 
-            /*System.out.println("maxSfb = " + maxSfb);*/
+                /*System.out.println("maxSfb = " + maxSfb);*/
             /*System.out.println("scaleFactorGrouping = " +
               scaleFactorGrouping);*/
-            /*System.out.println("maskPresent = " + maskPresent);*/
-            /*System.out.println("startBit = " + startBit);*/
+                /*System.out.println("maskPresent = " + maskPresent);*/
+                /*System.out.println("startBit = " + startBit);*/
 
-            if (maskPresent == 1) {
-                int sfgZeroBitCount = 0;
-                for (int b = 0; b < 7; b++) {
-                    if ((scaleFactorGrouping & (1 << b)) == 0) {
+                if (maskPresent == 1) {
+                    int sfgZeroBitCount = 0;
+                    for (int b = 0; b < 7; b++) {
+                        if ((scaleFactorGrouping & (1 << b)) == 0) {
                         /*System.out.println("  1 point for bit " + b +
                                            ": " + (1 << b) +
                                            ", " + (scaleFactorGrouping & (1 << b)));*/
-                        sfgZeroBitCount++;
+                            sfgZeroBitCount++;
+                        }
                     }
+                    /*System.out.println("sfgZeroBitCount = " + sfgZeroBitCount);*/
+
+                    int numWindowGroups = 1 + sfgZeroBitCount;
+                    /*System.out.println("numWindowGroups = " + numWindowGroups);*/
+
+                    int skip = maxSfb * numWindowGroups;
+                    /*System.out.println("skip = " + skip);*/
+
+                    startBit += skip;
+                    /*System.out.println("new startBit = " + startBit);*/
                 }
-                /*System.out.println("sfgZeroBitCount = " + sfgZeroBitCount);*/
 
-                int numWindowGroups = 1 + sfgZeroBitCount;
-                /*System.out.println("numWindowGroups = " + numWindowGroups);*/
+                // We may need to fill our buffer with more than the 4
+                // bytes we've already read, here.
+                int bytesNeeded = 1 + ((startBit + 7) / 8);
+                byte[] oldData = data;
+                data = new byte[bytesNeeded];
+                data[0] = oldData[0];
+                data[1] = oldData[1];
+                data[2] = oldData[2];
+                data[3] = oldData[3];
+                stream.read(data, 4, bytesNeeded - 4);
+                mOffset += (bytesNeeded - 4);
+                /*System.out.println("bytesNeeded: " + bytesNeeded);*/
 
-                int skip = maxSfb * numWindowGroups;
-                /*System.out.println("skip = " + skip);*/
-
-                startBit += skip;
-                /*System.out.println("new startBit = " + startBit);*/
-            }
-
-            // We may need to fill our buffer with more than the 4
-            // bytes we've already read, here.
-            int bytesNeeded = 1 + ((startBit + 7) / 8);
-            byte[] oldData = data;
-            data = new byte[bytesNeeded];
-            data[0] = oldData[0];
-            data[1] = oldData[1];
-            data[2] = oldData[2];
-            data[3] = oldData[3];
-            stream.read(data, 4, bytesNeeded - 4);
-            mOffset += (bytesNeeded - 4);
-            /*System.out.println("bytesNeeded: " + bytesNeeded);*/
-
-            int firstChannelGain = 0;
-            for (int b = 0; b < 8; b++) {
-                int b0 = (b + startBit) / 8;
-                int b1 = 7 - ((b + startBit) % 8);
-                int add = (((1 << b1) & data[b0]) >> b1) << (7 - b);
+                int firstChannelGain = 0;
+                for (int b = 0; b < 8; b++) {
+                    int b0 = (b + startBit) / 8;
+                    int b1 = 7 - ((b + startBit) % 8);
+                    int add = (((1 << b1) & data[b0]) >> b1) << (7 - b);
                 /*System.out.println("Bit " + (b  + startBit) + " " +
                                    "b0 " + b0 + " " +
                                    "b1 " + b1 + " " +
                                    "add " + add);*/
-                firstChannelGain += add;
-            }
-            /*System.out.println("firstChannelGain = " + firstChannelGain);*/
+                    firstChannelGain += add;
+                }
+                /*System.out.println("firstChannelGain = " + firstChannelGain);*/
 
-            mFrameGains[frameIndex] = firstChannelGain;
-            break;
+                mFrameGains[frameIndex] = firstChannelGain;
+                break;
 
-        default:
-            if (frameIndex > 0) {
-                mFrameGains[frameIndex] = mFrameGains[frameIndex - 1];
-            } else {
-                mFrameGains[frameIndex] = 0;
-            }
-            /*System.out.println("Unhandled idSynEle");*/
-            break;
+            default:
+                if (frameIndex > 0) {
+                    mFrameGains[frameIndex] = mFrameGains[frameIndex - 1];
+                } else {
+                    mFrameGains[frameIndex] = 0;
+                }
+                /*System.out.println("Unhandled idSynEle");*/
+                break;
         }
 
         int skip = mFrameLens[frameIndex] - (mOffset - initialOffset);
@@ -540,14 +543,14 @@ public class CheapAAC extends CheapSoundFile {
             throws java.io.IOException {
         byte[] atomHeader = new byte[8];
         int atomLen = mAtomMap.get(atomType).len;
-        atomHeader[0] = (byte)((atomLen >> 24) & 0xff);
-        atomHeader[1] = (byte)((atomLen >> 16) & 0xff);
-        atomHeader[2] = (byte)((atomLen >> 8) & 0xff);
-        atomHeader[3] = (byte)(atomLen & 0xff);
-        atomHeader[4] = (byte)((atomType >> 24) & 0xff);
-        atomHeader[5] = (byte)((atomType >> 16) & 0xff);
-        atomHeader[6] = (byte)((atomType >> 8) & 0xff);
-        atomHeader[7] = (byte)(atomType & 0xff);
+        atomHeader[0] = (byte) ((atomLen >> 24) & 0xff);
+        atomHeader[1] = (byte) ((atomLen >> 16) & 0xff);
+        atomHeader[2] = (byte) ((atomLen >> 8) & 0xff);
+        atomHeader[3] = (byte) (atomLen & 0xff);
+        atomHeader[4] = (byte) ((atomType >> 24) & 0xff);
+        atomHeader[5] = (byte) ((atomType >> 16) & 0xff);
+        atomHeader[6] = (byte) ((atomType >> 8) & 0xff);
+        atomHeader[7] = (byte) (atomType & 0xff);
         out.write(atomHeader, 0, 8);
     }
 
@@ -574,16 +577,16 @@ public class CheapAAC extends CheapSoundFile {
         FileInputStream in = new FileInputStream(mInputFile);
         FileOutputStream out = new FileOutputStream(outputFile);
 
-        SetAtomData(kFTYP, new byte[] {
+        SetAtomData(kFTYP, new byte[]{
                 'M', '4', 'A', ' ',
                 0, 0, 0, 0,
                 'M', '4', 'A', ' ',
                 'm', 'p', '4', '2',
                 'i', 's', 'o', 'm',
                 0, 0, 0, 0
-            });
-        
-        SetAtomData(kSTTS, new byte[] {
+        });
+
+        SetAtomData(kSTTS, new byte[]{
                 0, 0, 0, 0,  // version / flags
                 0, 0, 0, 1,  // entry count
                 (byte) ((numFrames >> 24) & 0xff),
@@ -594,9 +597,9 @@ public class CheapAAC extends CheapSoundFile {
                 (byte) ((mSamplesPerFrame >> 16) & 0xff),
                 (byte) ((mSamplesPerFrame >> 8) & 0xff),
                 (byte) (mSamplesPerFrame & 0xff)
-            });
+        });
 
-        SetAtomData(kSTSC, new byte[] {
+        SetAtomData(kSTSC, new byte[]{
                 0, 0, 0, 0,  // version / flags
                 0, 0, 0, 1,  // entry count
                 0, 0, 0, 1,  // first chunk
@@ -605,77 +608,77 @@ public class CheapAAC extends CheapSoundFile {
                 (byte) ((numFrames >> 8) & 0xff),
                 (byte) (numFrames & 0xff),
                 0, 0, 0, 1  // Smaple desc index
-            });
+        });
 
         byte[] stszData = new byte[12 + 4 * numFrames];
-        stszData[8] = (byte)((numFrames >> 24) & 0xff);
-        stszData[9] = (byte)((numFrames >> 16) & 0xff);
-        stszData[10] = (byte)((numFrames >> 8) & 0xff);
-        stszData[11] = (byte)(numFrames & 0xff);
+        stszData[8] = (byte) ((numFrames >> 24) & 0xff);
+        stszData[9] = (byte) ((numFrames >> 16) & 0xff);
+        stszData[10] = (byte) ((numFrames >> 8) & 0xff);
+        stszData[11] = (byte) (numFrames & 0xff);
         for (int i = 0; i < numFrames; i++) {
             stszData[12 + 4 * i] =
-                (byte)((mFrameLens[startFrame + i] >> 24) & 0xff);
+                    (byte) ((mFrameLens[startFrame + i] >> 24) & 0xff);
             stszData[13 + 4 * i] =
-                (byte)((mFrameLens[startFrame + i] >> 16) & 0xff);
+                    (byte) ((mFrameLens[startFrame + i] >> 16) & 0xff);
             stszData[14 + 4 * i] =
-                (byte)((mFrameLens[startFrame + i] >> 8) & 0xff);
+                    (byte) ((mFrameLens[startFrame + i] >> 8) & 0xff);
             stszData[15 + 4 * i] =
-                (byte)(mFrameLens[startFrame + i] & 0xff);
+                    (byte) (mFrameLens[startFrame + i] & 0xff);
         }
         SetAtomData(kSTSZ, stszData);
 
         int mdatOffset =
-            144 +
-            4 * numFrames +
-            mAtomMap.get(kSTSD).len +
-            mAtomMap.get(kSTSC).len +
-            mAtomMap.get(kMVHD).len +
-            mAtomMap.get(kTKHD).len +
-            mAtomMap.get(kMDHD).len +
-            mAtomMap.get(kHDLR).len +
-            mAtomMap.get(kSMHD).len +
-            mAtomMap.get(kDINF).len;
+                144 +
+                        4 * numFrames +
+                        mAtomMap.get(kSTSD).len +
+                        mAtomMap.get(kSTSC).len +
+                        mAtomMap.get(kMVHD).len +
+                        mAtomMap.get(kTKHD).len +
+                        mAtomMap.get(kMDHD).len +
+                        mAtomMap.get(kHDLR).len +
+                        mAtomMap.get(kSMHD).len +
+                        mAtomMap.get(kDINF).len;
 
         /*System.out.println("Mdat offset: " + mdatOffset);*/
 
-        SetAtomData(kSTCO, new byte[] {
+        SetAtomData(kSTCO, new byte[]{
                 0, 0, 0, 0,  // version / flags
                 0, 0, 0, 1,  // entry count
                 (byte) ((mdatOffset >> 24) & 0xff),
                 (byte) ((mdatOffset >> 16) & 0xff),
                 (byte) ((mdatOffset >> 8) & 0xff),
                 (byte) (mdatOffset & 0xff),
-            });
+        });
 
         mAtomMap.get(kSTBL).len =
-            8 +
-            mAtomMap.get(kSTSD).len +
-            mAtomMap.get(kSTTS).len +
-            mAtomMap.get(kSTSC).len +
-            mAtomMap.get(kSTSZ).len +
-            mAtomMap.get(kSTCO).len;
+                8 +
+                        mAtomMap.get(kSTSD).len +
+                        mAtomMap.get(kSTTS).len +
+                        mAtomMap.get(kSTSC).len +
+                        mAtomMap.get(kSTSZ).len +
+                        mAtomMap.get(kSTCO).len;
 
         mAtomMap.get(kMINF).len =
-            8 +
-            mAtomMap.get(kDINF).len +
-            mAtomMap.get(kSMHD).len +
-            mAtomMap.get(kSTBL).len;
+                8 +
+                        mAtomMap.get(kDINF).len +
+                        mAtomMap.get(kSMHD).len +
+                        mAtomMap.get(kSTBL).len;
 
         mAtomMap.get(kMDIA).len =
-            8 +
-            mAtomMap.get(kMDHD).len +
-            mAtomMap.get(kHDLR).len +
-            mAtomMap.get(kMINF).len;
+                8 +
+                        mAtomMap.get(kMDHD).len +
+                        mAtomMap.get(kHDLR).len +
+                        mAtomMap.get(kMINF).len;
 
         mAtomMap.get(kTRAK).len =
-            8 +
-            mAtomMap.get(kTKHD).len +
-            mAtomMap.get(kMDIA).len;
+                8 +
+                        mAtomMap.get(kTKHD).len +
+                        mAtomMap.get(kMDIA).len;
 
         mAtomMap.get(kMOOV).len =
-            8 +
-            mAtomMap.get(kMVHD).len +
-            mAtomMap.get(kTRAK).len;
+                8 +
+                        mAtomMap.get(kMVHD).len +
+                        mAtomMap.get(kTRAK).len;
 
         int mdatLen = 8;
         for (int i = 0; i < numFrames; i++) {
@@ -739,11 +742,11 @@ public class CheapAAC extends CheapSoundFile {
     }
 
     /** For debugging
-    public static void main(String[] argv) throws Exception {
-        File f = new File("");
-        CheapAAC c = new CheapAAC();
-        c.ReadFile(f);
-        c.WriteFile(new File(""),
-                    0, c.getNumFrames());
-    } **/
+     public static void main(String[] argv) throws Exception {
+     File f = new File("");
+     CheapAAC c = new CheapAAC();
+     c.ReadFile(f);
+     c.WriteFile(new File(""),
+     0, c.getNumFrames());
+     } **/
 };

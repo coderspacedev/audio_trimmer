@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/audio_trim.iml" filepath="$PROJECT_DIR$/.idea/modules/audio_trim.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/audio_trimmer.iml" filepath="$PROJECT_DIR$/.idea/modules/audio_trimmer.iml" />
     </modules>
   </component>
